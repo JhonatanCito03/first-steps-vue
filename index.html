@@ -8,15 +8,64 @@
     <title>Document</title>
 </head>
 <body>
+  <!--
 <div id="app" class="container mt-5">
     <h4 v-text="nombre + apellido" style="display: flex; justify-content: center;"></h4>
-   <h1 :class="ansColor" v-text="respuesta"></h1>
+   <h1 :class="ansColor" v-text="respuesta" accesskey="n"></h1>
    <input class="form-control form-control-lg" type="number" placeholder="Por favor ingrese un numero" aria-label=".form-control-lg example" v-model.number="numero1">
    <input class="form-control form-control-lg mt-2" type="number" placeholder="Por favor ingrese otro numero" aria-label=".form-control-lg example" v-model.number="numero2">
    <div class="button" style="display: flex;justify-content: center;">
     <button type="button" class="btn btn-primary mt-2" style="display: flex;" v-text="nameButton" @click="sumar"></button>
    </div>
+
+    <div class="container">
+   <div  v-for="item in info" class="card" style="width: 18rem;">
+    <img :src="item.img" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title" v-text="item.nombre"></h5>
+      <p class="card-text" v-text="item.perfil"></p>
+      <span class="badge text-bg-primary" v-for="item in item.hobby">{{item}} </span>
+      <a href="#" class="btn btn-primary">Buscar persona</a>
+    </div>
+    </div>
+    </div>
 </div>
+-->
+<div id="app" class="container mt-5">
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr style="text-align: center;">
+        <th scope="col">Image</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Profile</th>
+        <th scope="col">Hobbies</th>
+        <th scope="col">Rol</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="item in info" style="text-align: center;">
+        <td :title="'foto de '+ item.name+' ' + item.lastName+ ': ' + item.profile" >
+          <img :src="item.img" class="rounded mx-auto d-block" width="60px">
+        </td>
+        <td v-text="item.name"></td>
+        <td v-text="item.lastName"></td>
+        <td v-text="item.profile"></td>
+        <td>
+        <span class="badge text-bg-secondary" v-for="item in item.hobbies" style="display: flex; margin-bottom: 2px;justify-content: center;border-radius: 10px;">{{item}} </span>
+        </td>
+        <td v-text="item.rol"></td>
+        <td>
+          <button class="btn btn-danger">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script src="main.js"></script>
